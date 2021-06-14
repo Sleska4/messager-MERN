@@ -20,7 +20,11 @@ router.post('/registration',
             })
         }
 
-        const {email, password} = req.body;
+        const {email, password, name, passwordRepeat} = req.body;
+
+        if (password !== passwordRepeat) {
+            return res.status(300).json({message: 'Пароли не совпадают'})
+        }
 
         const isUsed = await User.findOne({ email });
 
@@ -31,7 +35,7 @@ router.post('/registration',
         const hashedPassword = await bcrypt.hash(password, 12)
 
         const user = new User({
-            email, password: hashedPassword
+            email, password: hashedPassword, name
         });
 
         await user.save();

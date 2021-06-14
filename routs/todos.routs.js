@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const router = Router();
-const Todo = require('../modals/Todo');
+const Todo = require('../modals/Frends');
 router.post('/add', async(req, res) => {
     try{
         const {text, userId} = req.body;

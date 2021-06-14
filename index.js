@@ -10,9 +10,13 @@ const io = require('socket.io')(http);
 
 const PORT = process.env.PORT || 5000;
 
+//middleware
 app.use(express.json({extended: true}));
 app.use('/api/auth', require('./routs/auth.rout'));
 app.use('/api/todo', require('./routs/todos.routs'));
+app.use('/api/info', require('./routs/info.rout'));
+app.use('/api/static', require('./routs/static.rout'))
+
 
 const start = async () => {
     try {

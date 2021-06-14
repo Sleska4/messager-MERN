@@ -9,7 +9,9 @@ import './AuthPage.scss';
 const AuthPage = () => {
     const [form, setForm] = useState({
         email: '',
-        password: ''
+        password: '',
+        passwordRepeat: '',
+        name: ''
     })
 
     const { login } = useContext(AuthContext)
@@ -19,6 +21,10 @@ const AuthPage = () => {
 
     const registerHandler = async () => {
         try{
+            if (form.password !== form.passwordRepeat){
+                alert('Пароли не совпадают!');
+                return
+            }
             await axios.post('/api/auth/registration', {...form}, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -66,19 +72,21 @@ const AuthPage = () => {
                                 <input 
                                     type="email" 
                                     name="email" 
+                                    id="auth-email"
                                     className="validate"
                                     onChange={changeHandler}
                                 />
-                                <label htmlFor="email">Email</label>
+                                <label htmlFor="auth-email">Email</label>
                             </div>
                             <div className="input-field col s12">
+                                <label htmlFor="auth-password">Password</label>
                                 <input 
                                     type="password" 
                                     name="password" 
+                                    id="auth-password"
                                     className="validate"
                                     onChange={changeHandler}
                                 />
-                                <label htmlFor="password">Password</label>
                             </div>
                         </div>
                         <div className="row">
@@ -101,19 +109,41 @@ const AuthPage = () => {
                                 <input 
                                     type="email" 
                                     name="email" 
+                                    id="registr-email"
                                     className="validate"
                                     onChange={changeHandler}
                                     />
-                                <label htmlFor="email">Email</label>
+                                <label htmlFor="registr-email">Email</label>
+                            </div>
+                            <div className="input-field col s12">
+                                <input 
+                                    type="text"
+                                    name="name" 
+                                    id="registr-name"
+                                    className="validate"
+                                    onChange={changeHandler}
+                                    />
+                                <label htmlFor="registr-name">Name</label>
                             </div>
                             <div className="input-field col s12">
                                 <input 
                                     type="password" 
                                     name="password" 
+                                    id="registr-password"
                                     className="validate"
                                 onChange={changeHandler}
                                 />
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="registr-password">Password</label>
+                            </div>
+                            <div className="input-field col s12">
+                                <input 
+                                    type="password" 
+                                    name="passwordRepeat" 
+                                    id="registr-password-repeat"
+                                    className="validate"
+                                    onChange={changeHandler}
+                                    />
+                                <label htmlFor="registr-password-repeat">Repeat password</label>
                             </div>
                         </div>
                         <div className="row">
