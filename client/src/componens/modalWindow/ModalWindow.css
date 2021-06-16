@@ -1,0 +1,74 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 120;
+  transition: 0.3s all;
+}
+/* Стили для модальных окон */
+.modal-window {
+  display: none;
+  height: 80%;
+  width: 100%;
+  max-width: 1000px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 130;
+  box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 30px;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: 0.3s all;
+}
+/* Стили для кнопки закрытия */
+.modal__cross {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  fill: #444;
+  cursor: pointer;
+}
+/* Стили для кнопок. Мы ведь порядочные разработчики, негоже простые ссылки оставлять */
+.active {
+  transition: 0.5s;
+  display: block;
+}
+.modal__title {
+  font-size: 2em;
+}
+.lol {
+  position: relative;
+}
+.content {
+  height: 500px;
+}
+.buttons {
+  float: right;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.buttons button {
+  height: 50px;
+  width: 150px;
+  background-color: green;
+  box-shadow: 3px 3px 3px gray;
+  color: floralwhite;
+  border: solid 1px black;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+.buttons button:hover {
+  background-color: white;
+  color: black;
+  transition: 0.3s;
+}

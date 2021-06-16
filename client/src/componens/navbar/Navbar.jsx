@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import './navbar.scss'
+import './navbar.css'
 import { AuthContext } from './../../context/AuthContext';
 
 const Navbar = () => {

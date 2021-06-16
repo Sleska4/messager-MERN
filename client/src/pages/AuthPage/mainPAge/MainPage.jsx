@@ -1,48 +1,21 @@
-import React, {useState} from 'react';
-import axios from 'axios';
+import React from 'react';
+import {useRoutes} from './mainPageRouts';
 
-//import { useSelector } from 'react-redux';
-
-
-import './mainPage.scss';
+import './mainPage.css';
 
 
 const MainPage = () => {
-    const [info, setInfo] = useState([]);
-    // const userData = JSON.parse(localStorage.getItem('userData'));
-
-    // const {userId} = userData;
 
 
-    //const state = useSelector(state => state.test)
 
-    // const start = async (id) => {
-    //     try{
-    //         await axios.get(`/api/info/get-info/${id}`)
-    //         .then(res => setInfo(res.data))
-    //     } catch(err){
-    //         console.log(err)
-    //     }
-    // }
+    const rout = useRoutes(true)
 
-    const test = async () => {
-        try{
-            await axios.post(`/api/static/addImg`)
-            .then(res => setInfo(res.data))
-        } catch(err){
-            console.log(err)
-        }
-    }
-
-    
     return (
-        <div className="main">
-            <div className="row">
-                <h3>{info.name}</h3>
-                    <input onChange={test} type="file" name="uploadFile"/>
-
-            </div>
+        <div className="container bgc-mainPage">
+            {rout}
         </div>
+
+        
     );
 }
 

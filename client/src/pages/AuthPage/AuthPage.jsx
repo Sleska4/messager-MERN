@@ -4,7 +4,7 @@ import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import Particles from 'react-particles-js';
 
-import './AuthPage.scss';
+import './AuthPage.css';
 
 const AuthPage = () => {
     const [form, setForm] = useState({

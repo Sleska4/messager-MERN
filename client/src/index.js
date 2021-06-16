@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './index.css';
 import App from './App';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
 const defaultState = {
-  test: 0
+  modalWindowOpen: true
 }
 
 const reducer = (state=defaultState, action) => {
   switch(action.type) {
-    case "TEST":
-      return {...state, test: 5}
+    case "MODAL_WINDOW_CHANGE":
+      return {...state, modalWindowOpen: !state.modalWindowOpen}
     default:
       return state
   }

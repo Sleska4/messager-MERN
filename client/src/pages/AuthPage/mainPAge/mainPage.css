@@ -1,0 +1,17 @@
+.main {
+  height: 100%;
+}
+
+.nav {
+  background-color: #212121;
+  height: 100vh;
+}
+h3 {
+  display: block;
+  margin: 0;
+  padding-top: 20px;
+}
+.bgc-mainPage {
+  height: 100vh;
+  background-color: white;
+}

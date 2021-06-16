@@ -40,7 +40,7 @@ router.post('/registration',
 
         await user.save();
 
-        res.status(201).json({message: 'Пользователь создан'})
+        res.status(201).json({ message: 'Пользователь создан'})
 
     } catch(err){
         console.log(err)

@@ -1,19 +1,24 @@
 const {Router} = require('express');
 const router = Router();
 
+const path = require('path');
 
-router.post('/addImg', (req, res) => {
-    try{
-        console.log(req.files)
-    //     const uploadFile = req.files.uploadFiles;
-    //     const imageUrl = `/images/${uploadFiles.name}`;
-    //     uploadFiles.mv(path.join(__dirname, 'public', images, uploadFile.name))
-    //     .then(() => {
-    //         res.json({message: 'File uploaded', imageUrl})
-    // })
-    } catch(err) {
-        console.log(err)
-    }
-})
+
+router.post('/upload', (req, res) => {
+try{
+      let uploadFile = req.files.image;
+
+      const imageUrl = `/images/${uploadFile.name}`;
+
+      uploadFile
+            .mv(path.join(__dirname + '/..', 'public', 'images', uploadFile.name))
+            .then(() => {
+                  // perform database save operation here and then give appropriate response
+                  res.status(200).json({ message: 'File uploaded', imageUrl: imageUrl });
+            })
+} catch(err){
+            console.log(err)
+      }
+      })
 
 module.exports = router
