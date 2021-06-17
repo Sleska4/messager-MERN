@@ -1,0 +1,14 @@
+.player-content {
+  height: 54px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.play {
+  display: flex;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+}

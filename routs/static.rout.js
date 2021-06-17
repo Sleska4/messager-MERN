@@ -1,12 +1,13 @@
 const {Router} = require('express');
 const router = Router();
-
 const path = require('path');
 
 
 router.post('/upload', (req, res) => {
 try{
-      let uploadFile = req.files.image;
+      let uploadFile = req.files.document;
+
+      console.log(req.body)
 
       const imageUrl = `/images/${uploadFile.name}`;
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import {useDispatch } from 'react-redux';
 
 import './music.css'
+import MusicPlayer from '../../../../componens/musicPlayer/MusicPlayer';
 
 
 
@@ -12,31 +12,12 @@ const MusicMain = () => {
     const openWindow = () => {
         dispatch({type: "MODAL_WINDOW_CHANGE"})  
     }  
-
-    const hendleFile = async (e) => {
-        const formData = new FormData();
-        formData.append("image", e.target.files[0])
-        console.log(e.target.files);
-
-        try{
-            await axios.post('/files/upload', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-            .then(() => {
-                FormData.delete("image")
-            });
-        } catch(err) {
-            console.log(err)
-        }
-    }
-
-    
     return (
             <div className="main">
                 <div className="music-player">
-
+                    <div className="music-player-container">
+                        <MusicPlayer/>
+                    </div>
                 </div>
                 <div className="music-nav-block">
                     <div className="music-navbar">
@@ -68,10 +49,6 @@ const MusicMain = () => {
 
                 </div>
                 <hr />
-                <form type="file" id="file">
-                    <input  type="file" name="upload-test" id='upload-test' onChange={(e) => hendleFile(e)} />
-                    <button>OK</button>
-                </form>
             </div>
     );
 }
