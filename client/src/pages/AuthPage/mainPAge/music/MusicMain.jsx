@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import './music.css'
 import MusicPlayer from '../../../../componens/musicPlayer/MusicPlayer';
+import MusicList from './../../../../componens/musicList/MusicList';
 
 
 
@@ -12,6 +14,27 @@ const MusicMain = () => {
     const openWindow = () => {
         dispatch({type: "MODAL_WINDOW_CHANGE"})  
     }  
+
+    const [music, setMusic] = useState([]);
+
+    const getMusic = async () => {
+        try {
+            await axios.get('/files/music', {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then ((response) => setMusic(response.data))
+
+        } catch(err){
+            console.log(err)
+        }
+    };
+
+    useEffect(() => {
+        getMusic();
+    }, [])
+
     return (
             <div className="main">
                 <div className="music-player">
@@ -46,7 +69,7 @@ const MusicMain = () => {
 
 
                 <div className="music-list">
-
+                    <MusicList list={music}/>
                 </div>
                 <hr />
             </div>

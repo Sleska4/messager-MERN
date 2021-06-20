@@ -15,21 +15,18 @@ export default function ModalWindow() {
         dispatch({type: "MODAL_WINDOW_CHANGE"})  
     }  
     const [file, setFile] = useState({});
-    const [title, setTitle] = useState('Проверка');
+    const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
 
-    const hendleFile = (e) => {
-        const formData = new FormData();
-        formData.append("document", e.target.files[0])
-        formData.append('test', JSON.stringify('sdsaddasa'))
-        setFile(formData);
-    }
-
     const onSubmitTest = async (e) => {
+        const formData = new FormData();
+        formData.append("document", file.target.files[0])
+        formData.append("title", title)
+        formData.append("author", author)
         e.preventDefault();
         try{
             console.log(file)
-            await axios.post('/files/upload', file, {
+            await axios.post('/files/upload', formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -59,14 +56,17 @@ export default function ModalWindow() {
                     <b className="modal__title">Выберите элемент</b>
                     <div class="content row">
                         <form className="form-content" id="test" onSubmit={() => onSubmitTest()}>
-                            <input  type="file" name="upload-test" id='upload-test' onChange={(e) => hendleFile(e)} />
+                            <input  type="file" name="upload-test" id='upload-test' onChange={(e) => setFile(e)} />
                             <div className="input-type-text">
                                 <input 
+                                    onChange={(e) => setTitle(e.target.value)}
                                     type="text"
                                     placeholder="Название композиции" 
                                     name="musicName" 
+                                    value={title}
                                     id="musicName"/>
                                 <input  
+                                    value={author}
                                     onChange={(e) => setAuthor(e.target.value)}
                                     type="text" 
                                     placeholder="Автор" 
