@@ -19,16 +19,14 @@ export default function ModalWindow() {
     const [author, setAuthor] = useState('');
 
     const onSubmitTest = async (e) => {
-        const formData = new FormData();
-        formData.append("document", file.target.files[0])
-        formData.append("title", title)
-        formData.append("author", author)
+        const test = document.forms.modalWindowMusicForm
+        const formData = new FormData(test);
         e.preventDefault();
         try{
             console.log(file)
             await axios.post('/files/upload', formData, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'multipart/form-data'
                 }
             })
             .then(() => console.log('Успех'))
@@ -54,9 +52,9 @@ export default function ModalWindow() {
                 </div>
                 <div>
                     <b className="modal__title">Выберите элемент</b>
-                    <div class="content row">
-                        <form className="form-content" id="test" onSubmit={() => onSubmitTest()}>
-                            <input  type="file" name="upload-test" id='upload-test' onChange={(e) => setFile(e)} />
+                    <div className="content row">
+                        <form className="form-content" name="modalWindowMusicForm" id="modalWindowMusicForm" onSubmit={() => onSubmitTest()}>
+                            <input  type="file" name="document" id='document' onChange={(e) => setFile(e)} />
                             <div className="input-type-text">
                                 <input 
                                     onChange={(e) => setTitle(e.target.value)}
@@ -73,7 +71,7 @@ export default function ModalWindow() {
                                     name="musicAuthor" 
                                     id="musicAuthor"/>
                             </div>
-                            <button onClick={(e) => onSubmitTest(e)}>OK</button>
+                            <button className="btn-ok" onClick={(e) => onSubmitTest(e)}>OK</button>
                         </form>
                     </div>
                 </div>

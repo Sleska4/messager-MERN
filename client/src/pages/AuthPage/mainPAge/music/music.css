@@ -54,5 +54,9 @@ button {
 }
 
 .music-player-container {
-  max-width: 500px;
+  max-width: 100%;
+}
+
+.options {
+  width: 100px;
 }

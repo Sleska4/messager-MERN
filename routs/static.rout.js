@@ -32,11 +32,8 @@ try{
 
 router.get('/music', async(req, res) => {
       try {
-
             const music = await Music.find();
-
             res.json(music);
-            
       } catch(err) {
             console.log(err)
       }

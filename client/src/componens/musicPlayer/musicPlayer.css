@@ -1,14 +1,52 @@
 .player-content {
-  height: 54px;
+  height: 58px;
   padding: 0 20px;
   display: flex;
   align-items: center;
+  width: 100%;
+}
+.btn-controler {
+  height: 100%;
+  width: 50px;
 }
 
 .play {
-  display: flex;
-  align-items: center;
+  margin-top: 8px;
+
   width: 30px;
   height: 30px;
   border: 2px solid black;
+}
+.img {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border: 1px solid black;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info {
+  margin-left: 20px;
+}
+
+.box-width {
+  width: 70%;
+}
+
+.audio-track {
+  min-width: 600px;
+  height: 3px;
+  background-color: #dddddd;
+  margin: 20px;
+}
+
+.time {
+  width: 0;
+  height: 3px;
+  background-color: #474747;
 }

@@ -6,7 +6,7 @@ import ReactAudioPlayer from 'react-audio-player';
 const MusicList = ({list}) => {
 
     const items = list.map((el) =>
-        <li key={el.link}>
+        <li key={el._id}>
              <ReactAudioPlayer
             src={el.link}
             controls
