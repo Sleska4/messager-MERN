@@ -11,6 +11,7 @@ function App() {
   const isLogin = !!token;
   const routes = useRoutes(isLogin);
 
+  const bgc = isLogin ? "bgc" : "" 
 
   return (
     <AuthContext.Provider value={{login, logout, token, userId, isReady, isLogin}}>
@@ -18,7 +19,7 @@ function App() {
         <BrowserRouter>
           <ModalWindow window={window} />
           <Navbar/>
-          <div className="bgc">
+          <div className={bgc}>
             {routes}
           </div>
         </BrowserRouter>

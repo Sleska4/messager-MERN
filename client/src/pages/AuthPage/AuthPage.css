@@ -3,6 +3,9 @@
   background-color: #212121;
   z-index: -1;
 }
+.main {
+  padding: 0;
+}
 
 .auth-page {
   text-align: center;

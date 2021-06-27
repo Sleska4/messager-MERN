@@ -1,16 +1,20 @@
 import React from 'react';
-import ReactAudioPlayer from 'react-audio-player';
+
+import './musicList.css'
 
 
+const MusicList = ({list, setMusicActiveIndex}) => {
 
-const MusicList = ({list}) => {
-
-    const items = list.map((el) =>
+    const items = list.map((el, index) =>
         <li key={el._id}>
-             <ReactAudioPlayer
-            src={el.link}
-            controls
-        />
+            <div className="music-list-elem" onClick={() => setMusicActiveIndex(index)}>
+                    <div className="music-list-img">
+                </div>
+                <div className="music-list-info">
+                    <b className="title">{el.title}</b>
+                    <p className="author">{el.author}</p>
+                </div>
+            </div>
         </li>
   );
 

@@ -5,6 +5,7 @@ import axios from 'axios';
 import './music.css'
 import MusicPlayer from '../../../../componens/musicPlayer/MusicPlayer';
 import MusicList from './../../../../componens/musicList/MusicList';
+//import { ReactAudioPlayer } from 'react-audio-player';
 
 
 
@@ -16,6 +17,7 @@ const MusicMain = () => {
     }  
 
     const [music, setMusic] = useState([]);
+    const [musicActiveIndex, setMusicActiveIndex] = useState(0);
 
     const getMusic = async () => {
         try {
@@ -39,7 +41,7 @@ const MusicMain = () => {
             <div className="main">
                 <div className="music-player">
                     <div className="music-player-container">
-                        <MusicPlayer/>
+                        <MusicPlayer musicList={music} musicActiveIndex={musicActiveIndex} setMusicActiveIndex={setMusicActiveIndex}/>
                     </div>
                 </div>
                 <div className="music-nav-block">
@@ -69,7 +71,7 @@ const MusicMain = () => {
 
 
                 <div className="music-list">
-                    <MusicList list={music}/>
+                    <MusicList list={music} setMusicActiveIndex={setMusicActiveIndex}/>
                 </div>
                 <hr />
             </div>

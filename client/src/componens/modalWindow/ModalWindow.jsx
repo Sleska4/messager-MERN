@@ -14,7 +14,7 @@ export default function ModalWindow() {
     const closeWindow = () => {
         dispatch({type: "MODAL_WINDOW_CHANGE"})  
     }  
-    const [file, setFile] = useState({});
+    const [file, setFile] = useState();
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
 
@@ -54,7 +54,6 @@ export default function ModalWindow() {
                     <b className="modal__title">Выберите элемент</b>
                     <div className="content row">
                         <form className="form-content" name="modalWindowMusicForm" id="modalWindowMusicForm" onSubmit={() => onSubmitTest()}>
-                            <input  type="file" name="document" id='document' onChange={(e) => setFile(e)} />
                             <div className="input-type-text">
                                 <input 
                                     onChange={(e) => setTitle(e.target.value)}
@@ -71,6 +70,7 @@ export default function ModalWindow() {
                                     name="musicAuthor" 
                                     id="musicAuthor"/>
                             </div>
+                            <input  type="file" name="document" id='document' onChange={(e) => setFile(e)} />
                             <button className="btn-ok" onClick={(e) => onSubmitTest(e)}>OK</button>
                         </form>
                     </div>

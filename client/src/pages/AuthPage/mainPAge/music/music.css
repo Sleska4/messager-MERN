@@ -26,10 +26,10 @@
   border: none;
 }
 .music-navbar-elems li {
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 .music-navbar-elems li:hover {
-  transition: 0.3s;
+  transition: 0.3s ease;
   outline: red solid 2px;
   color: red;
 }
@@ -59,4 +59,7 @@ button {
 
 .options {
   width: 100px;
+}
+.music-list {
+  margin-top: 20px;
 }

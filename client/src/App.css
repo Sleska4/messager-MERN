@@ -1,4 +1,6 @@
 .app {
+  margin: 0 auto;
+  padding: 0;
   height: 100vh;
   overflow: hidden;
 }
@@ -8,5 +10,4 @@
 }
 .bgc {
   background-color: #212121;
-  height: 100vh;
 }

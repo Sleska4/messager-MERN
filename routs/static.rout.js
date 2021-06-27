@@ -4,9 +4,18 @@ const path = require('path');
 const Music = require('../modals/Music');
 
 
+// Пока работает чисто с музыкой.
 router.post('/upload', async(req, res) => {
 try{
       let uploadFile = req.files.document;
+
+      const splitArr = uploadFile.name.split('.');
+
+      // Валидация получаемого файла
+      if(splitArr[splitArr.length - 1] !== 'mp3'){
+            console.log(splitArr[splitArr.length - 1])
+            return res.status(300).json({ message: `Не верный формат файла`})
+      }
 
       const imageUrl = `/images/${uploadFile.name}`;
 
