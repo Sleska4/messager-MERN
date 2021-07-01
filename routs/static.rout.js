@@ -19,7 +19,7 @@ try{
 
       const imageUrl = `/images/${uploadFile.name}`;
 
-      uploadFile.mv(path.join(__dirname + '/..', 'public', 'images', uploadFile.name))
+      uploadFile.mv(path.join(__dirname + '/..', 'public', 'audio', uploadFile.name))
 
       const title = req.body.title || "Без названия";
       const author = req.body.author || "Без автора";

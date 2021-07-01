@@ -7,29 +7,46 @@ export default function MusicPlayer({musicList, musicActiveIndex, setMusicActive
     const [playingNow, setPlayingNow] = useState({title: "", author: "", link: "#"});
     const [currentTime, setCurrentTime] = useState()
     const audio = useMemo(() => new Audio(), []);
-    let musicIsPlay = false; 
+    let musicIsPlay = false;
+    const width = { width: `${currentTime/audio.duration * 100}%` }
 
     useEffect(() => {
         if(musicList[musicActiveIndex]){
             setPlayingNow(musicList[musicActiveIndex]);
             audio.pause();
             audio.src = (playingNow.link);
-        }
-        }, [musicActiveIndex, musicList, audio, playingNow.link]);
+        };
+        }, [musicActiveIndex, musicList, audio, playingNow.link, musicIsPlay]);
 
-    const play = () => {
-        if (!musicIsPlay) {
-            audio.play();
+
+        const play = () => {
+            if (!musicIsPlay) {
+                audio.play();
+            }
+            else{
+                audio.pause();
+            }
+            musicIsPlay = !musicIsPlay;
+        } 
+
+        audio.onplay = (() => {
             setInterval(() => {
                 const time = Math.floor(audio.currentTime);
                 setCurrentTime(time);
-            }, 1000);
+            });
+        })
+        
+    const dataFormat = (seconds) => {
+        if(!seconds){
+            return false
         }
-        else{
-            audio.pause();
-        }
-        musicIsPlay = !musicIsPlay;
-    } 
+        seconds = Math.floor(seconds);
+        let s = Math.floor(seconds % 60);
+        s = s >= 0 && s < 10 ? `0${s}` : s;
+        let m = Math.floor(seconds / 60 % 60);
+        m = m >= 0 && m < 10 ? `0${m}` : m;
+        return (`${m}:${s}`)
+    }
     
     return(
         <div className="player-content">
@@ -45,8 +62,10 @@ export default function MusicPlayer({musicList, musicActiveIndex, setMusicActive
                     <p>{playingNow.author}</p>
                 </div>
                 <div className="box-width">
-                    <div className="box-width-time"><span className="music-current-time">{currentTime || '00:00'} / {'00:00'}</span></div>
+                    <div className="box-width-time"><span className="music-current-time">{dataFormat(audio.currentTime) || '00:00'} / {dataFormat(audio.duration) || '00:00'}</span></div>
                     <div className="audio-track">
+                        <div className="audio-time" style={width} ></div>
+                        <div className="music-controller"></div>
                     </div>
                 </div>
                 <div className="options">

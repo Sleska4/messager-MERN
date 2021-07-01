@@ -17,7 +17,7 @@ app.use(express.json({extended: true}));
 app.use('/static', express.static('public'))
 app.use('/api/auth', require('./routs/auth.rout'));
 app.use('/api/info', require('./routs/info.rout'));
-app.use('/files', require('./routs/static.rout'))
+app.use('/files', require('./routs/static.rout'));
 
 
 
